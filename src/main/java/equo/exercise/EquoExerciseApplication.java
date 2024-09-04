@@ -13,21 +13,37 @@ public class EquoExerciseApplication {
 
 	public static void main(String[] args) {
 
-		Scanner scanner = new Scanner("txt");
+        SpringApplication.run(EquoExerciseApplication.class, args);
 
-		int positionX = scanner.nextInt();
+        Scanner scanner = new Scanner(System.in);
+
+        String output="Final Positions : ";
+
+        //create the plateau
+        int positionX = scanner.nextInt();
 		int positionY = scanner.nextInt();
 
-		if (Plateau.validPlateau(positionX,positionY)){
-			Plateau plateau = new Plateau(positionX,positionY);
-		}else{
-			//error
-		}
+        Plateau plateau = new Plateau(positionX,positionY);
 
-		while (scanner.hasNext()){
-			if ()
-		}
+        while (scanner.hasNext()) {
+            //get drone position data
+            int x = scanner.nextInt();
+            int y = scanner.nextInt();
+            char direction = scanner.next().charAt(0);
 
-		SpringApplication.run(EquoExerciseApplication.class, args);
+            if (!plateau.insideThePlateau(x,y)){throw new IllegalArgumentException("Invalid initial drone position. Should be inside the plateau");}
+
+            Position initialPosition = new Position(x, y, direction);
+            Drone drone = new Drone(initialPosition, plateau);
+
+            //get drone instructions
+            String instructions = scanner.next();
+
+            //execute instructions
+            output.concat(drone.executeInstructions(instructions));
+        }
+
+        System.out.println(output);
 	}
+
 }

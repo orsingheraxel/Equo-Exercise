@@ -5,11 +5,10 @@ public class Plateau {
     private final int[][] plateau;
 
     public Plateau(int x, int y) {
+        if (x <= 0 || y <= 0) {
+            throw new IllegalArgumentException("Invalid arguments to create the plateau. Dimensions must be greater than zero.");
+        }
         plateau= new int [x][y];
-    }
-
-    public static boolean validPlateau(int x, int y){
-        return x>0 && y>0;
     }
 
     public boolean insideThePlateau(int x, int y){

@@ -9,22 +9,33 @@ public class Drone {
         this.plateau=plateau;
     }
 
+    public String executeInstructions(String instructions){
+        for (char c : instructions.toCharArray()){
+            switch(c){
+                case 'L': turnLeft(); break;
+                case 'R': turnRight(); break;
+                case 'M': moveForward(); break;
+            }
+        }
+        return position.toString();
+    }
+
     private void turnLeft(){
         switch(position.getDirection()){
-            case 'N': position.setDirection('W');
-            case 'W': position.setDirection('S');
-            case 'S': position.setDirection('E');
-            case 'E': position.setDirection('N');
+            case 'N': position.setDirection('W'); break;
+            case 'W': position.setDirection('S'); break;
+            case 'S': position.setDirection('E'); break;
+            case 'E': position.setDirection('N'); break;
 
         }
     }
 
     private void turnRight(){
         switch(position.getDirection()){
-            case 'N': position.setDirection('E');
-            case 'E': position.setDirection('S');
-            case 'S': position.setDirection('W');
-            case 'W': position.setDirection('N');
+            case 'N': position.setDirection('E'); break;
+            case 'E': position.setDirection('S'); break;
+            case 'S': position.setDirection('W'); break;
+            case 'W': position.setDirection('N'); break;
 
         }
     }
@@ -35,10 +46,10 @@ public class Drone {
         int y = position.getY();
 
         switch(position.getDirection()){
-            case 'N': y++;
-            case 'E': x++;
-            case 'S': y--;
-            case 'W': x--;
+            case 'N': y++; break;
+            case 'E': x++; break;
+            case 'S': y--; break;
+            case 'W': x--; break;
         }
 
         if (plateau.insideThePlateau(x,y)){
