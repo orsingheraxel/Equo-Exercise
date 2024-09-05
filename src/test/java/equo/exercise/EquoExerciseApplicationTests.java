@@ -19,13 +19,13 @@ class EquoExerciseApplicationTests {
 
 		//first drone
 		Position position1 = new Position(1, 2, 'N');
-		Drone drone1 = new Drone(position1, plateau);
+		Drone drone1 = new Drone(1,position1, plateau);
 		String finalPosition1 = drone1.executeInstructions("LMLMLMLMM");
 		assertEquals("(1,3,N)", finalPosition1);
 
 		//second drone
 		Position position2 = new Position(3, 3, 'E');
-		Drone drone2 = new Drone(position2, plateau);
+		Drone drone2 = new Drone(2,position2, plateau);
 		String finalPosition2 = drone2.executeInstructions("MMRMMRMRRM");
 		assertEquals("(5,1,E)", finalPosition2);
 	}

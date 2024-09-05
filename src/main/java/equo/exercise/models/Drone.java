@@ -1,12 +1,18 @@
 package equo.exercise.models;
 
 public class Drone {
+    private final Integer id;
     private final Position position;
     private final Plateau plateau;
 
-    public Drone (Position position, Plateau plateau){
+    public Drone (Integer id, Position position, Plateau plateau){
+        this.id=id;
         this.position=position;
         this.plateau=plateau;
+    }
+
+    public Integer getId(){
+        return this.id;
     }
 
     public String executeInstructions(String instructions){
@@ -56,7 +62,7 @@ public class Drone {
             position.setX(x);
             position.setY(y);
         } else {
-            System.out.println("Warning a Drone has outside the plateau");
+            System.out.println("Warning: A drone with ID "+id+" has attempted to move outside the plateau. -> ("+x+","+y+","+position.getDirection()+")");
         }
 
     }
